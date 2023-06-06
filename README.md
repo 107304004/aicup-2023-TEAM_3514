@@ -64,7 +64,7 @@ python bert_sent.py --mode test
 | concat_train.jsonl, wiki-pages, train_doc.jsonl | bert.ckpt | take about 2 hours |
 | wiki-pages, test_doc.jsonl, bert.ckpt | test_sent.jsonl | take about 2 hours |
 
-- `get_p3_data` : get train_data.csv & test_data.csv for next stage
+- `get_p3_data.py` : get train_data.csv & test_data.csv for next stage
 ```bash
 python get_p3_data.py --mode train
 python get_p3_data.py --mode test
