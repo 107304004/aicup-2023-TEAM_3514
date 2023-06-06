@@ -32,8 +32,8 @@ def get_pred(d_ls):
             for item in section.find_all('a'):
                 if 'title' not in item.attrs.keys(): continue
                 link = item['title']
-                # get 2 wiki_link each doc_pred
-                if count < 3 :
+                # get 5 wiki_link each doc_pred
+                if count < 5 :
                     # check link in wiki_data
                     if link in wiki_page and link not in pred:
                         pred.append(link)
@@ -69,7 +69,7 @@ if args.mode == "train":
     # compute recall before link
     recall = 0
     for i in range(len(labels)):
-        pages = list(npm_doc10.loc[npm_doc10["id"]==ids[i]].iloc[0]["predicted_pages"]) + bm25_doc10.loc[bm25_doc10["id"]==ids[i]].iloc[0]["predicted_pages"]
+        pages = npm_doc10.loc[npm_doc10["id"]==ids[i]].iloc[0]["predicted_pages"] + bm25_doc10.loc[bm25_doc10["id"]==ids[i]].iloc[0]["predicted_pages"]
 
         if labels[i] == "NOT ENOUGH INFO":
             recall += 1
@@ -89,8 +89,9 @@ if args.mode == "train":
     recall = 0
     predicted_pages = []
     for i in tqdm(range(len(labels))):
-        pages = list(npm_doc10.loc[npm_doc10["id"]==ids[i]].iloc[0]["predicted_pages"]) + bm25_doc10.loc[bm25_doc10["id"]==ids[i]].iloc[0]["predicted_pages"]
-        predicted_pages.append(get_pred(list(set(pages))))
+        pages = npm_doc10.loc[npm_doc10["id"]==ids[i]].iloc[0]["predicted_pages"] + bm25_doc10.loc[bm25_doc10["id"]==ids[i]].iloc[0]["predicted_pages"]
+        pages = list(set(get_pred(pages)))
+        predicted_pages.append(pages)
         # print(predicted_pages[i])
 
         if labels[i] == "NOT ENOUGH INFO":
@@ -120,7 +121,7 @@ if args.mode == "test":
 
     predicted_pages = []
     for i in tqdm(range(len(ids))):
-        pages = list(npm_doc10.loc[npm_doc10["id"]==ids[i]].iloc[0]["predicted_pages"]) + bm25_doc10.loc[bm25_doc10["id"]==ids[i]].iloc[0]["predicted_pages"]
-        predicted_pages.append(get_pred(list(set(pages))))
+        pages = npm_doc10.loc[npm_doc10["id"]==ids[i]].iloc[0]["predicted_pages"] + bm25_doc10.loc[bm25_doc10["id"]==ids[i]].iloc[0]["predicted_pages"]
+        predicted_pages.append(list(set(get_pred(pages))))
 
     save_doc(TEST_DATA, predicted_pages, "test")

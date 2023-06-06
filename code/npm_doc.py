@@ -108,7 +108,7 @@ def get_pred_pages(series_data):
     elif len(results) < 1:
         results = first_wiki_term
 
-    return set(results)
+    return results
 
 
 if args.mode == "train":
