@@ -33,7 +33,7 @@ def get_pred(d_ls):
                 if 'title' not in item.attrs.keys(): continue
                 link = item['title']
                 # get 5 wiki_link each doc_pred
-                if count < 5 :
+                if count < 3 :
                     # check link in wiki_data
                     if link in wiki_page and link not in pred:
                         pred.append(link)
