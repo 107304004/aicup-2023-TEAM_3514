@@ -1,8 +1,8 @@
 # AICUP-2023 真相只有一個: 事實文字檢索與查核競賽
 
 ## TEAM_3514
-Public LB Score: 0.407482
-Private LB Score: 0.522138
+- Public LB Score: 0.407482
+- Private LB Score: 0.522138
 
 ## Run our code
 - Use our fine-tune model to get the test result
@@ -77,8 +77,8 @@ python xlnet_cv.py --mode test
 ```
 | input file | output file | Note |
 | :-----: | :----: | :----: |
-| train_data.csv | xlet.ckpt | take about ? hours |
-| test_data.csv, xlnet.ckpt | 0602xlnet_sub.jsonl | - |
+| train_data.csv | xlet.ckpt | take about 1 hour |
+| test_data.csv, xlnet.ckpt | 0602xlnet_sub.jsonl | take about 10 mins |
 
 
 
