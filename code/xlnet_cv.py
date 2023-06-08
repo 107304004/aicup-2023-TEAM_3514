@@ -129,7 +129,7 @@ if args.mode == "train":
     #     break
 
 
-    n_epochs = 3
+    n_epochs = 35
     for epoch in range(n_epochs):
         model.train()
         train_loss = 0.0
