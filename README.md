@@ -5,6 +5,7 @@
 - Private LB Score: 0.522138
 
 ## Run our code
+- Download our saved checkpoint via this [link](https://drive.google.com/drive/folders/1JV6Blg7oJ00dgfq5BTnvaoXCmbHnuq1m?usp=sharing)
 - Use our fine-tune model to get the test result
 ```bash
 ./quick_run.sh
